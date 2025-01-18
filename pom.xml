@@ -10,9 +10,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>JavaCachingPattern</module>
+        <module>CircuitBreakerPattern</module>
     </modules>
 
     <properties>
+        <slf4j.version>1.7.32</slf4j.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +31,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.32</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
