@@ -11,6 +11,7 @@
     <modules>
         <module>JavaCachingPattern</module>
         <module>CircuitBreakerPattern</module>
+        <module>StrategyDesignPattern</module>
     </modules>
 
     <properties>
