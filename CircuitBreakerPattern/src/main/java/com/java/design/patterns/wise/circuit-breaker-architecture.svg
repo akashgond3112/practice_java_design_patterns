@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="5" ry="5"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Circuit Breaker Pattern Architecture</text>
+  
+  <!-- Client Application -->
+  <rect x="50" y="100" width="180" height="100" rx="10" ry="10" fill="#b3e0ff" stroke="#333" stroke-width="2"/>
+  <text x="140" y="150" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">Client Application</text>
+  
+  <!-- Circuit Breaker -->
+  <rect x="310" y="80" width="220" height="300" rx="10" ry="10" fill="#ffd699" stroke="#333" stroke-width="2"/>
+  <text x="420" y="110" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" font-weight="bold">Circuit Breaker</text>
+  
+  <!-- Circuit Breaker States -->
+  <rect x="330" y="130" width="180" height="60" rx="5" ry="5" fill="#98FB98" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold">CLOSED</text>
+  <text x="420" y="185" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">(Normal Operation)</text>
+  
+  <rect x="330" y="200" width="180" height="60" rx="5" ry="5" fill="#FFD700" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="235" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold">HALF_OPEN</text>
+  <text x="420" y="255" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">(Testing Recovery)</text>
+  
+  <rect x="330" y="270" width="180" height="60" rx="5" ry="5" fill="#ff9999" stroke="#333" stroke-width="1.5"/>
+  <text x="420" y="305" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold">OPEN</text>
+  <text x="420" y="325" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">(Blocking Requests)</text>
+  
+  <!-- Circuit Breaker Components -->
+  <rect x="330" y="340" width="180" height="30" rx="5" ry="5" fill="#e6e6e6" stroke="#333" stroke-width="1"/>
+  <text x="420" y="360" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Sliding Error Window</text>
+  
+  <!-- External Service -->
+  <rect x="610" y="100" width="140" height="100" rx="10" ry="10" fill="#c2f0c2" stroke="#333" stroke-width="2"/>
+  <text x="680" y="150" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">External Service</text>
+  
+  <!-- Monitoring -->
+  <rect x="310" y="430" width="220" height="80" rx="10" ry="10" fill="#d9b3ff" stroke="#333" stroke-width="2"/>
+  <text x="420" y="465" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">Monitoring &amp; Metrics</text>
+  <text x="420" y="490" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Error Count, State, Transition Time</text>
+  
+  <!-- Arrows -->
+  <!-- Client to Circuit Breaker -->
+  <path d="M230 140 L310 140" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="255" y="130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Request</text>
+  
+  <!-- Circuit Breaker to Client (rejection) -->
+  <path d="M310 170 C280 170, 280 160, 230 160" stroke="#ff6666" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+  <text x="270" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff6666">Rejection</text>
+  
+  <!-- Circuit Breaker to Service -->
+  <path d="M530 140 L610 140" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="570" y="130" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Allowed</text>
+  
+  <!-- Service to Circuit Breaker -->
+  <path d="M610 160 L530 160" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="570" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Response</text>
+  
+  <!-- State transition arrows inside circuit breaker -->
+  <path d="M410 190 L410 200" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410 260 L410 270" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M350 230 C320 230, 320 160, 350 160" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M490 270 C520 270, 520 230, 490 230" stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Circuit Breaker to Monitoring -->
+  <path d="M420 380 L420 430" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Configuration -->
+  <rect x="50" y="250" width="180" height="80" rx="10" ry="10" fill="#ffcccc" stroke="#333" stroke-width="2"/>
+  <text x="140" y="280" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">Configuration</text>
+  <text x="140" y="305" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">errorThreshold, timeWindow,</text>
+  <text x="140" y="320" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">coolOff, successThreshold</text>
+  
+  <!-- Configuration to Circuit Breaker -->
+  <path d="M230 290 L310 230" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Key components -->
+  <rect x="50" y="430" width="180" height="120" rx="10" ry="10" fill="#ffffcc" stroke="#333" stroke-width="2"/>
+  <text x="140" y="455" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">Key Components</text>
+  <text x="140" y="480" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• State Machine</text>
+  <text x="140" y="500" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Error Tracking Queue</text>
+  <text x="140" y="520" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Atomic Counters</text>
+  <text x="140" y="540" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Thread-safe Implementation</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <rect x="610" y="430" width="140" height="120" rx="5" ry="5" fill="white" stroke="#333" stroke-width="1.5"/>
+  <text x="680" y="450" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold">Legend</text>
+  
+  <rect x="620" y="460" width="15" height="15" fill="#98FB98" stroke="#333" stroke-width="1"/>
+  <text x="680" y="472" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Closed State</text>
+  
+  <rect x="620" y="485" width="15" height="15" fill="#FFD700" stroke="#333" stroke-width="1"/>
+  <text x="680" y="497" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Half-Open State</text>
+  
+  <rect x="620" y="510" width="15" height="15" fill="#ff9999" stroke="#333" stroke-width="1"/>
+  <text x="680" y="522" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Open State</text>
+  
+  <path d="M620 535 L635 535" stroke="#ff6666" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="680" y="538" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Rejected Request</text>
+</svg>
