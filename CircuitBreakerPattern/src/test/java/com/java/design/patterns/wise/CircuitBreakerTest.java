@@ -73,29 +73,7 @@ public class CircuitBreakerTest {
 	}
 
 	@Test
-	@DisplayName("Test Case 4: Cool-off period - circuit remains OPEN for cool-off duration")
-	void testCoolOffPeriod() throws InterruptedException {
-		CircuitBreaker cb = new CircuitBreaker(4, 60, 2); // 2-second cool-off for faster test
-
-		// Trip the circuit
-		for (int i = 0; i < 5; i++) {
-			cb.recordError(500);
-		}
-		cb.allowRequest(); // Check state to ensure circuit is tripped
-
-		assertEquals(OPEN, cb.getState().toString(), "Circuit should be OPEN after tripping");
-
-		// Wait for half of cool-off period
-		Thread.sleep(1000);
-		assertEquals(OPEN, cb.getState().toString(), "Circuit should still be OPEN during cool-off period");
-
-		// Wait for the rest of cool-off period plus a small buffer
-		Thread.sleep(1200);
-		assertEquals(CLOSED, cb.getState().toString(), "Circuit should reset to CLOSED after cool-off period");
-	}
-
-	@Test
-	@DisplayName("Test Case 5: Client-side errors (4xx) - circuit does not trip")
+	@DisplayName("Test Case 4: Client-side errors (4xx) - circuit does not trip")
 	void testClientSideErrors() {
 		CircuitBreaker cb = new CircuitBreaker(4, 60, 10);
 
@@ -109,7 +87,7 @@ public class CircuitBreakerTest {
 	}
 
 	@Test
-	@DisplayName("Test Case 6: Multi-threaded environment - thread safety")
+	@DisplayName("Test Case 5: Multi-threaded environment - thread safety")
 	@Timeout(value = 10, unit = TimeUnit.SECONDS)
 	void testMultithreadedEnvironment() throws InterruptedException {
 		CircuitBreaker cb = new CircuitBreaker(4, 60, 5);
@@ -161,32 +139,60 @@ public class CircuitBreakerTest {
 	}
 
 	@Test
-	@DisplayName("Test mixed success and failure scenarios")
-	void testMixedSuccessAndFailure() {
+	@DisplayName("Test Case 6: Cool-off period - circuit remains OPEN for cool-off duration")
+	void testCoolOffPeriod() throws InterruptedException {
+		CircuitBreaker cb = new CircuitBreaker(4, 60, 2); // 2-second cool-off for faster test
+
+		// Trip the circuit
+		for (int i = 0; i < 5; i++) {
+			cb.recordError(500);
+		}
+		cb.allowRequest(); // Ensures circuit transitions to OPEN
+
+		assertEquals(CircuitBreaker.State.OPEN, cb.getState(), "Circuit should be OPEN after tripping");
+
+		// Wait for half of cool-off period
+		Thread.sleep(1000);
+		assertEquals(CircuitBreaker.State.OPEN, cb.getState(), "Circuit should still be OPEN during cool-off period");
+
+		// Wait for the rest of cool-off period plus a small buffer
+		Thread.sleep(1100);
+
+		// Explicitly calling allowRequest() to trigger the state transition
+		cb.allowRequest();
+		assertEquals(CircuitBreaker.State.CLOSED, cb.getState(), "Circuit should reset to CLOSED after cool-off period");
+	}
+
+	@Test
+	@DisplayName("Test Case 7: Test mixed success and failure scenarios - Client errors should not trip circuit")
+	void testClientErrorsDoNotTripCircuit() {
 		CircuitBreaker cb = new CircuitBreaker(4, 60, 10);
 
-		// Mix of successes and failures
-		cb.recordError(500); // Error 1
+		// Mix of successes, client errors, and server errors
+		cb.recordError(500); // Error 1 (server)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(200); // Success
+		cb.recordError(400); // Client error (should be ignored)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(500); // Error 2
+		cb.recordError(500); // Error 2 (server)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(500); // Error 3
+		cb.recordError(401); // Client error (should be ignored)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(200); // Success
+		cb.recordError(500); // Error 3 (server)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(500); // Error 4
+		cb.recordError(403); // Client error (should be ignored)
 		assertTrue(cb.allowRequest(), "Request should be allowed");
 
-		cb.recordError(500); // Error 5 - should trip circuit
+		cb.recordError(500); // Error 4 (server)
+		assertTrue(cb.allowRequest(), "Request should be allowed");
+
+		cb.recordError(500); // Error 5 (server) - should trip circuit
 		assertFalse(cb.allowRequest(), "Request should be blocked after threshold is exceeded");
 
-		assertEquals(OPEN, cb.getState().toString(), "Circuit should be OPEN after errors exceed threshold");
+		assertEquals(CircuitBreaker.State.OPEN, cb.getState(), "Circuit should be OPEN after errors exceed threshold");
 	}
 }

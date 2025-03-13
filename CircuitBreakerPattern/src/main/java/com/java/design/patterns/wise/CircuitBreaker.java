@@ -77,7 +77,7 @@ public class CircuitBreaker {
 	public boolean allowRequest() {
 		if (state.get() == State.CLOSED) {
 			evictOldErrors();
-			if (errorTimestamps.size() >= errorThreshold) {
+			if (errorTimestamps.size() > errorThreshold) {
 				// Attempt to trip the circuit to OPEN
 				boolean tripped = state.compareAndSet(State.CLOSED, State.OPEN);
 				if (tripped) {
