@@ -1,0 +1,55 @@
+classDiagram
+    class Client {
+        +usePaymentMethod()
+    }
+    
+    class PaymentFactory {
+        +createPaymentMethod(PaymentType) PaymentMethod
+    }
+    
+    class PaymentType {
+        <<enumeration>>
+        CREDIT_CARD
+        PAYPAL
+        BITCOIN
+    }
+    
+    class PaymentMethod {
+        <<interface>>
+        +processPayment(amount)
+        +getPaymentType() String
+    }
+    
+    class CreditCardPayment {
+        +processPayment(amount)
+        +getPaymentType() String
+    }
+    
+    class PayPalPayment {
+        +processPayment(amount)
+        +getPaymentType() String
+    }
+    
+    class BitcoinPayment {
+        +processPayment(amount)
+        +getPaymentType() String
+    }
+    
+    class PaymentProcessor {
+        -paymentMethod: PaymentMethod
+        +PaymentProcessor(PaymentType)
+        +processPayment(amount)
+        +getPaymentType() String
+    }
+    
+    Client --> PaymentFactory : uses
+    Client --> PaymentProcessor : uses
+    PaymentFactory --> PaymentType : uses
+    PaymentFactory --> CreditCardPayment : creates
+    PaymentFactory --> PayPalPayment : creates
+    PaymentFactory --> BitcoinPayment : creates
+    PaymentProcessor --> PaymentFactory : uses
+    PaymentProcessor --> PaymentMethod : references
+    PaymentMethod <|.. CreditCardPayment : implements
+    PaymentMethod <|.. PayPalPayment : implements
+    PaymentMethod <|.. BitcoinPayment : implements
