@@ -12,6 +12,7 @@
         <module>JavaCachingPattern</module>
         <module>CircuitBreakerPattern</module>
         <module>StrategyDesignPattern</module>
+        <module>FactoryPattern</module>
     </modules>
 
     <properties>
