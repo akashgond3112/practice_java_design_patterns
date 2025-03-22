@@ -36,3 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/SidecarPattern/logs/application-2025-03-22-0.log
+/SidecarPattern/logs/application-2025-03-22-1.log

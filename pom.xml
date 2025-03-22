@@ -13,6 +13,7 @@
         <module>CircuitBreakerPattern</module>
         <module>StrategyDesignPattern</module>
         <module>FactoryPattern</module>
+        <module>SidecarPattern</module>
     </modules>
 
     <properties>

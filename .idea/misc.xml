@@ -5,10 +5,38 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/BookMyShow/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/DistributedCache/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/DriverAndRiderApplication/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/ElectoralSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/ElevatorDesign/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/EventCalendar/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/FileDirectory/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/FlightTrackingSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/FoodKart/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/HitCounter/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/HotelManagmentSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/LibraryManagementSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/MultiLevelCache/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/ParkingLot/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/PropertyHuntApplication/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/RateLimiter/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/RideSharingApplication/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/UberMini/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/atmMachine/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/bowlingMachine/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/calculator/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/couponService/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/cricketMachDashBoard/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

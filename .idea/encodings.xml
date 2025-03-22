@@ -7,9 +7,37 @@
     <file url="file://$PROJECT_DIR$/FactoryPattern/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JavaCachingPattern/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JavaCachingPattern/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SidecarPattern/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SidecarPattern/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/StrategyDesignPattern/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/StrategyDesignPattern/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/BookMyShow/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/DistributedCache/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/DriverAndRiderApplication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/DriverAndRiderApplication/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/ElectoralSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/ElevatorDesign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/EventCalendar/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/FileDirectory/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/FlightTrackingSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/FoodKart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/HitCounter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/HotelManagmentSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/LibraryManagementSystem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/MultiLevelCache/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/ParkingLot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/PropertyHuntApplication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/RateLimiter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/RideSharingApplication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/UberMini/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/atmMachine/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/bowlingMachine/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/calculator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/couponService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/cricketMachDashBoard/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/src/main/resources" charset="UTF-8" />
   </component>
 </project>
