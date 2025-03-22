@@ -4,7 +4,7 @@ This project demonstrates the Sidecar Pattern using a simple Java application. T
 
 ## Architecture
 
-![Sidecar Pattern Architecture](docs/Sidecar Pattern Architecture Diagram 2025-03-22 18.43.22.excalidraw.png)
+![Sidecar Pattern Architecture](docs/Sidecar%20Pattern%20Architecture%20Diagram%202025-03-22%2018.43.22.excalidraw.png)
 
 The architecture consists of:
 
