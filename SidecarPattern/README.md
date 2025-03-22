@@ -22,26 +22,30 @@ The architecture consists of:
 ## Project Structure
 
 ```
-sidecar-pattern-demo/
+Sidecarpattern/
 ├── src/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/
-│   │   │       └── example/
-│   │   │           └── sidecar/
-│   │   │               ├── BusinessService.java
-│   │   │               ├── LoggingSidecar.java
-│   │   │               ├── MainApplication.java
-│   │   │               └── Sidecar.java
+│   │   │       └── java/
+│   │   │           └── design/
+│   │   │               └── patterns/
+│   │   │                   └── sidecar/
+│   │   │                       ├── BusinessService.java
+│   │   │                       ├── LoggingSidecar.java
+│   │   │                       ├── MainApplication.java
+│   │   │                       └── Sidecar.java
 │   │   └── resources/
 │   │       └── logback.xml
 │   └── test/
 │       └── java/
 │           └── com/
-│               └── example/
-│                   └── sidecar/
-│                       ├── BusinessServiceTest.java
-│                       └── LoggingSidecarTest.java
+│               └── java/
+│                   └── design/
+│                       └── patterns/
+│                           └── sidecar/
+│                               ├── BusinessServiceTest.java
+│                               └── LoggingSidecarTest.java
 ├── pom.xml
 ├── docs/
 │   └── Sidecar Pattern Architecture Diagram 2025-03-22 18.43.22.excalidraw.png
