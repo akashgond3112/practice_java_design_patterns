@@ -6,6 +6,10 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/pom.xml" />
+        <option value="$PROJECT_DIR$/JavaCachingPattern/pom.xml" />
+        <option value="$PROJECT_DIR$/SidecarPattern/pom.xml" />
+        <option value="$PROJECT_DIR$/FactoryPattern/pom.xml" />
+        <option value="$PROJECT_DIR$/CircuitBreakerPattern/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
