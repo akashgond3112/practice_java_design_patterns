@@ -5,12 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.java.design.patterns</groupId>
-    <artifactId>sidecar-pattern-demo</artifactId>
+    <artifactId>practice-java-design-patterns</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>Sidecar Pattern</name>
+    <name>Java Design Pattern</name>
     <description>A demonstration of the sidecar pattern in Java</description>
+    <modules>
+        <module>Singleton Pattern</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
