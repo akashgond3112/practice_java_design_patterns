@@ -33,6 +33,12 @@
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/PropertyHuntApplication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/RateLimiter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/RideSharingApplication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/RuleMatcher/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/Scheduler/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/SnakeLadderGame/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/Splitwise/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/StockExchange/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/TrueCaller/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/UberMini/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/atmMachine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/bowlingMachine/src/main/java" charset="UTF-8" />
@@ -41,5 +47,7 @@
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/cricketMachDashBoard/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/trello/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Practice_Low_Level_Desing/vacuumCleaner/src/main/java" charset="UTF-8" />
   </component>
 </project>

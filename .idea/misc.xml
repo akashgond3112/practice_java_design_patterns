@@ -4,12 +4,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/pom.xml" />
-        <option value="$PROJECT_DIR$/JavaCachingPattern/pom.xml" />
-        <option value="$PROJECT_DIR$/SidecarPattern/pom.xml" />
-        <option value="$PROJECT_DIR$/FactoryPattern/pom.xml" />
-        <option value="$PROJECT_DIR$/CircuitBreakerPattern/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -31,12 +27,20 @@
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/PropertyHuntApplication/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/RateLimiter/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/RideSharingApplication/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/RuleMatcher/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/Scheduler/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/SnakeLadderGame/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/Splitwise/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/StockExchange/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/TrueCaller/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/UberMini/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/atmMachine/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/bowlingMachine/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/calculator/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/couponService/pom.xml" />
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/cricketMachDashBoard/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/trello/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/vacuumCleaner/pom.xml" />
       </set>
     </option>
   </component>

@@ -13,13 +13,19 @@
     <description>A demonstration of the sidecar pattern in Java</description>
     <modules>
         <module>Singleton Pattern</module>
+        <module>StrategyDesignPattern</module>
+        <module>CircuitBreakerPattern</module>
+        <module>FactoryPattern</module>
+        <module>JavaCachingPattern</module>
+        <module>SidecarPattern</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <logback.version>1.4.11</logback.version>
+        <logback.version>1.5.13</logback.version>
+        <lombok.version>1.18.36</lombok.version>
         <slf4j.version>2.0.9</slf4j.version>
     </properties>
 
@@ -34,6 +40,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Testing -->
