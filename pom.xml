@@ -18,6 +18,7 @@
         <module>FactoryPattern</module>
         <module>JavaCachingPattern</module>
         <module>SidecarPattern</module>
+        <module>Observerpattern</module>
     </modules>
 
     <properties>
