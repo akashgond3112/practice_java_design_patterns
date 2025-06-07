@@ -19,12 +19,13 @@
         <module>JavaCachingPattern</module>
         <module>SidecarPattern</module>
         <module>Observerpattern</module>
+        <module>practice-java-with-kafka</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <logback.version>1.5.13</logback.version>
         <lombok.version>1.18.36</lombok.version>
         <slf4j.version>2.0.9</slf4j.version>
