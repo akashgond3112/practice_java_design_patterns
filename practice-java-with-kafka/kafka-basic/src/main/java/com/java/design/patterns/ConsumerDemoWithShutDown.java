@@ -18,6 +18,9 @@ public class ConsumerDemoWithShutDown {
 	public static void main(String[] args) {
 		log.info("Starting Consumer demo");
 
+		// Load the logging configuration file
+		System.setProperty("org.slf4j.simpleLogger.properties", "src/main/resources/simplelogger.properties");
+
 		String groupId = "my-group";
 
 		Properties properties = new Properties();
@@ -59,7 +62,7 @@ public class ConsumerDemoWithShutDown {
 
 			while (true) {
 				log.info("Polling");
-				ConsumerRecords<String, String> records = consumer.poll(1000);
+				ConsumerRecords<String, String> records = consumer.poll(java.time.Duration.ofMillis(1000));
 				for (ConsumerRecord<String, String> record : records) {
 					log.info("key {}", record.key());
 					log.info("value {}", record.value());
