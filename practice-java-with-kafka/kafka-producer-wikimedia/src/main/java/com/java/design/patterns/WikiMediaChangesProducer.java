@@ -29,6 +29,14 @@ public class WikiMediaChangesProducer {
 		properties.setProperty("key.serializer", StringSerializer.class.getName());
 		properties.setProperty("value.serializer", StringSerializer.class.getName());
 
+		// set safety properties for kafka less than 2.8
+		/*
+		properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // enable idempotence
+		properties.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // retry indefinitely
+		properties.setProperty(ProducerConfig.RETRIES_CONFIG,
+				Integer.toString(Integer.MAX_VALUE)); // retry indefinitely
+				*/
+
 		// create producer
 		KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
