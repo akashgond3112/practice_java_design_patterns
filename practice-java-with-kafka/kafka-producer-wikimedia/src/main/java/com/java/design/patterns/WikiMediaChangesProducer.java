@@ -3,6 +3,7 @@ package com.java.design.patterns;
 import com.launchdarkly.eventsource.EventSource;
 import com.launchdarkly.eventsource.EventHandler;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +32,17 @@ public class WikiMediaChangesProducer {
 
 		// set safety properties for kafka less than 2.8
 		/*
-		properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // enable idempotence
-		properties.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // retry indefinitely
-		properties.setProperty(ProducerConfig.RETRIES_CONFIG,
-				Integer.toString(Integer.MAX_VALUE)); // retry indefinitely
-				*/
+		 * properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // enable idempotence
+		 * properties.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // retry indefinitely
+		 * properties.setProperty(ProducerConfig.RETRIES_CONFIG,
+		 * 				Integer.toString(Integer.MAX_VALUE)); // retry indefinitely
+		 */
+
+		// set high throughput properties
+		properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "20"); // wait for 20 ms before sending
+		properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32 * 1024)); // 32 KB batch size
+		properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy"); // use snappy compression
+
 
 		// create producer
 		KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
