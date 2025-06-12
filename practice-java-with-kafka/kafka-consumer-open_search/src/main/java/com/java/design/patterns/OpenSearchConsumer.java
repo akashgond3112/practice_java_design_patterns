@@ -2,6 +2,8 @@ package com.java.design.patterns;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.Duration;
+import java.util.Properties;
 
 import org.apache.hc.client5.http.auth.AuthScope;
 import org.apache.hc.client5.http.auth.CredentialsStore;
@@ -9,10 +11,16 @@ import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.impl.async.HttpAsyncClientBuilder;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.core5.http.HttpHost;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.serialization.StringDeserializer;
+import org.opensearch.action.index.IndexRequest;
+import org.opensearch.action.index.IndexResponse;
 import org.opensearch.client.Request;
+import org.opensearch.client.RequestOptions;
 import org.opensearch.client.Response;
 import org.opensearch.client.RestClient;
 import org.opensearch.client.RestHighLevelClient;
+import org.opensearch.common.xcontent.XContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,7 +76,9 @@ public class OpenSearchConsumer {
 
         RestHighLevelClient client = createOpenSearchClient();
 
-        try {
+        KafkaConsumer<String, String> consumer = createKafkaConsumer();
+
+        try (client; consumer) {
             // Use the low-level REST client to create the index without problematic
             // parameters
             Request indexExistsRequest = new Request("HEAD", "/wikimedia");
@@ -85,6 +95,31 @@ public class OpenSearchConsumer {
                 logger.info("Index created successfully. Status: {}", response.getStatusLine().getStatusCode());
             } else {
                 logger.info("Index already exists.");
+            }
+
+            // Subscribe to the topic
+            consumer.subscribe(java.util.Collections.singletonList("wikimedia.recentchange"));
+
+            while (true) {
+                logger.info("Polling for messages from Kafka...");
+                consumer.poll(Duration.ofMillis(3000)).forEach(record -> {
+                    logger.info("Received message: key={}, value={}, partition={}, offset={}",
+                            record.key(), record.value(), record.partition(), record.offset());
+
+                    // Here you would typically index the record into OpenSearch
+                    // For example:
+                    IndexRequest indexRequest = new IndexRequest("wikimedia")
+                            .id(record.key())
+                            .source(record.value(), XContentType.JSON);
+                    try {
+                        IndexResponse index = client.index(indexRequest, RequestOptions.DEFAULT);
+                        logger.info("Indexed document with ID: {}, Version: {}, Result: {}",
+                                index.getId(), index.getVersion(), index.getResult());
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                });
             }
         } catch (IOException e) {
             logger.error("Error creating index: ", e);
@@ -114,5 +149,29 @@ public class OpenSearchConsumer {
             logger.warn("Index check failed: {}", e.getMessage());
         }
         return indexExists;
+    }
+
+    private static KafkaConsumer<String, String> createKafkaConsumer() {
+        // Implementation for creating and configuring a Kafka consumer
+        // This method should return a configured KafkaConsumer instance
+        // For now, returning null as a placeholder
+
+        logger.info("Starting Consumer demo");
+
+        String groupId = "consumer_open_search";
+
+        Properties properties = new Properties();
+
+        // Connect to local Kafka setup
+        properties.setProperty("bootstrap.servers", "localhost:9092");
+
+        // create consumer configs
+        properties.setProperty("key.deserializer", StringDeserializer.class.getName());
+        properties.setProperty("value.deserializer", StringDeserializer.class.getName());
+
+        properties.setProperty("group.id", groupId);
+        properties.setProperty("auto.offset.reset", "latest");
+
+        return new KafkaConsumer<>(properties);
     }
 }
