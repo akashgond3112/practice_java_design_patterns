@@ -67,27 +67,20 @@ public class OpenSearchConsumer {
     public static void main(String[] args) {
 
         RestHighLevelClient client = createOpenSearchClient();
-        
+
         try {
-            // Use the low-level REST client to create the index without problematic parameters
+            // Use the low-level REST client to create the index without problematic
+            // parameters
             Request indexExistsRequest = new Request("HEAD", "/wikimedia");
-            boolean indexExists = false;
-            
-            try {
-                Response response = client.getLowLevelClient().performRequest(indexExistsRequest);
-                indexExists = response.getStatusLine().getStatusCode() == 200;
-            } catch (IOException e) {
-                // Index does not exist, will create it
-                logger.warn("Index check failed: {}", e.getMessage());
-            }
-            
+            boolean indexExists = checkIfIndexExists(client, indexExistsRequest);
+
             if (!indexExists) {
                 // Use PUT method without the cluster_manager_timeout parameter
                 Request createIndexRequest = new Request("PUT", "/wikimedia");
                 // Use master_timeout instead of cluster_manager_timeout
                 createIndexRequest.addParameter("timeout", "30s");
-                createIndexRequest.addParameter("master_timeout", "30s"); 
-                
+                createIndexRequest.addParameter("master_timeout", "30s");
+
                 Response response = client.getLowLevelClient().performRequest(createIndexRequest);
                 logger.info("Index created successfully. Status: {}", response.getStatusLine().getStatusCode());
             } else {
@@ -102,5 +95,24 @@ public class OpenSearchConsumer {
                 logger.error("Error closing OpenSearch client: ", e);
             }
         }
+    }
+
+    /**
+     * Checks if the specified index exists in OpenSearch.
+     *
+     * @param client             the RestHighLevelClient
+     * @param indexExistsRequest the Request to check index existence
+     * @return true if the index exists, false otherwise
+     */
+    private static boolean checkIfIndexExists(RestHighLevelClient client, Request indexExistsRequest) {
+        boolean indexExists = false;
+        try {
+            Response response = client.getLowLevelClient().performRequest(indexExistsRequest);
+            indexExists = response.getStatusLine().getStatusCode() == 200;
+        } catch (IOException e) {
+            // Index does not exist, will create it
+            logger.warn("Index check failed: {}", e.getMessage());
+        }
+        return indexExists;
     }
 }
