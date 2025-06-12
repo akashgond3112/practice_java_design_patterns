@@ -11,8 +11,12 @@ import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.impl.async.HttpAsyncClientBuilder;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.core5.http.HttpHost;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.opensearch.action.bulk.BulkRequest;
+import org.opensearch.action.bulk.BulkResponse;
 import org.opensearch.action.index.IndexRequest;
 import org.opensearch.action.index.IndexResponse;
 import org.opensearch.client.Request;
@@ -70,11 +74,32 @@ public class OpenSearchConsumer {
 	 * Main method for the OpenSearch consumer application. Implementation to be added for creating an OpenSearch
 	 * client, configuring Kafka consumer, and consuming Kafka topics to index data in OpenSearch.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		RestHighLevelClient client = createOpenSearchClient();
 
 		KafkaConsumer<String, String> consumer = createKafkaConsumer();
+
+
+		// get reference to the current thread
+		final Thread mainThread = Thread.currentThread();
+
+		// add the shut-down hook
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				logger.info("Shutting down");
+				consumer.wakeup();
+
+				// join the main thread to allow the execution of the code
+				try {
+					mainThread.join();
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+
+			}
+		});
 
 		try (client; consumer) {
 			// Use the low-level REST client to create the index without problematic
@@ -98,8 +123,11 @@ public class OpenSearchConsumer {
 			// Subscribe to the topic
 			consumer.subscribe(java.util.Collections.singletonList("wikimedia.recentchange"));
 
+			BulkRequest bulkRequest = new BulkRequest();
+
 			while (true) {
 				logger.info("Polling for messages from Kafka...");
+				BulkRequest finalBulkRequest = bulkRequest;
 				consumer.poll(Duration.ofMillis(3000)).forEach(record -> {
 					logger.debug("Received message: key={}, value={}, partition={}, offset={}", record.key(),
 							record.value(), record.partition(), record.offset());
@@ -108,23 +136,55 @@ public class OpenSearchConsumer {
 
 					IndexRequest indexRequest = new IndexRequest("wikimedia").id(id)
 							.source(record.value(), XContentType.JSON);
-					try {
+
+					finalBulkRequest.add(indexRequest);
+
+					/*try {
 						IndexResponse index = client.index(indexRequest, RequestOptions.DEFAULT);
-						logger.info("Indexed document with ID: {}, Version: {}, Result: {}", index.getId(),
+
+						logger.debug("Indexed document with ID: {}, Version: {}, Result: {}", index.getId(),
 								index.getVersion(), index.getResult());
 					} catch (Exception e) {
 						e.printStackTrace();
-					}
+					}*/
 				});
+
+				if (bulkRequest.numberOfActions() > 0) {
+					try {
+						BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+						if (bulkResponse.hasFailures()) {
+							logger.error("Bulk indexing failed: {}", bulkResponse.buildFailureMessage());
+						} else {
+							logger.info("Bulk indexing successful. Indexed {} documents.",
+									bulkResponse.getItems().length);
+							Thread.sleep(1000); // Sleep for 1 second after successful bulk indexing
+						}
+					} catch (IOException | InterruptedException e) {
+						logger.error("Error during bulk indexing: ", e);
+					}
+
+					// Commit offsets after processing messages
+					consumer.commitSync();
+					logger.info("Offsets committed successfully.");
+
+					// Reset the bulk request after processing
+					bulkRequest = new BulkRequest();
+				}
 			}
-		} catch (IOException e) {
-			logger.error("Error creating index: ", e);
+		} catch (WakeupException e) {
+			logger.info("Consumer is starting to Shutting down");
+		} catch (Exception e) {
+			logger.error("Error", e);
 		} finally {
+			logger.info("Shutting down gracefully");
 			try {
 				client.close();
+				consumer.close();
 			} catch (IOException e) {
 				logger.error("Error closing OpenSearch client: ", e);
 			}
+
+			client.close();
 		}
 	}
 
@@ -175,6 +235,8 @@ public class OpenSearchConsumer {
 
 		properties.setProperty("group.id", groupId);
 		properties.setProperty("auto.offset.reset", "latest");
+
+		properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
 
 		return new KafkaConsumer<>(properties);
 	}
