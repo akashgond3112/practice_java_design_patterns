@@ -15,6 +15,7 @@
         <module>kafka-basic</module>
         <module>kafka-producer-wikimedia</module>
         <module>kafka-consumer-open_search</module>
+        <module>kafka-stream-wikimedia</module>
     </modules>
 
     <properties>
@@ -25,10 +26,18 @@
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>3.7.1</version>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>4.0.0</version>
         </dependency>
     </dependencies>
 

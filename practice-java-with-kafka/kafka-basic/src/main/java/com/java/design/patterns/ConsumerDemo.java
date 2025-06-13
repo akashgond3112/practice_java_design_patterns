@@ -43,7 +43,7 @@ public class ConsumerDemo {
 
 		while (true) {
 			log.info("Polling");
-			ConsumerRecords<String, String> records = consumer.poll(1000);
+			ConsumerRecords<String, String> records = consumer.poll(java.time.Duration.ofMillis(1000));
 			for (ConsumerRecord<String, String> record : records) {
 				log.info("key {}", record.key());
 				log.info("value {}", record.value());
