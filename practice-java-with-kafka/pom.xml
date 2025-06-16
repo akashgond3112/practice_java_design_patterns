@@ -16,6 +16,7 @@
         <module>kafka-producer-wikimedia</module>
         <module>kafka-consumer-open_search</module>
         <module>kafka-stream-wikimedia</module>
+        <module>kafka-connect-basic</module>
     </modules>
 
     <properties>
