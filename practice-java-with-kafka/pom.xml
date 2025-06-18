@@ -17,6 +17,7 @@
         <module>kafka-consumer-open_search</module>
         <module>kafka-stream-wikimedia</module>
         <module>kafka-connect-basic</module>
+        <module>kafka-connect-arch-type</module>
     </modules>
 
     <properties>
