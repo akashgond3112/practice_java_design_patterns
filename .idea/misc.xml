@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/../Practice_Low_Level_Desing/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../kafka-connect-github-source/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
