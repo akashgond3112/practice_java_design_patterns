@@ -29,6 +29,18 @@
     <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-producer-wikimedia/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream-wikimedia/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream-wikimedia/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/bank-balance-exactly-once/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/bank-balance-exactly-once/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/favourite-colour-java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/favourite-colour-java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/streams-starter-project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/streams-starter-project/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/user-event-enricher/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/user-event-enricher/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/word-count/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-java-with-kafka/kafka-stream/word-count/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-java-with-kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-java-with-kafka/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

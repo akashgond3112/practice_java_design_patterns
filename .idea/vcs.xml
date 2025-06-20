@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/practice-java-with-kafka/kafka-connect-github-source" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Practice_Low_Level_Desing" vcs="Git" />
   </component>
 </project>

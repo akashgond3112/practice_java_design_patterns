@@ -20,6 +20,7 @@
         <module>SidecarPattern</module>
         <module>Observerpattern</module>
         <module>practice-java-with-kafka</module>
+        <module>practice-java-with-kafka/kafka-stream/bank-balance-exactly-once</module>
     </modules>
 
     <properties>
