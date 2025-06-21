@@ -18,6 +18,7 @@
         <module>kafka-stream-wikimedia</module>
         <module>kafka-connect-basic</module>
         <module>kafka-connect-arch-type</module>
+        <module>kafka-stream</module>
     </modules>
 
     <properties>
@@ -26,22 +27,56 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>4.0.0</version>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>4.0.0</version>
+            </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-    </dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+                <version>4.0.0</version>
+            </dependency>
 
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>connect-json</artifactId>
+                <version>3.7.0</version>
+            </dependency>
+
+            <!-- Jackson dependencies with aligned versions -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.16.2</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.16.2</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.16.2</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.opensearch.client/opensearch-rest-high-level-client -->
+            <dependency>
+                <groupId>org.opensearch.client</groupId>
+                <artifactId>opensearch-rest-high-level-client</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- No direct dependencies here, only dependencyManagement for child modules -->
 
 </project>
