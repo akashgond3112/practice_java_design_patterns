@@ -21,6 +21,7 @@
         <module>Observerpattern</module>
         <module>practice-java-with-kafka</module>
         <module>practice-java-with-kafka/kafka-stream/bank-balance-exactly-once</module>
+        <module>abstract-document-pattern</module>
     </modules>
 
     <properties>
