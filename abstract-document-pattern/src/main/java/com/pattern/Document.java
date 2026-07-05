@@ -1,0 +1,19 @@
+/**
+ * @author akash
+ * @date Jul 04, 2026
+ * @time 10:41:57 AM
+ */
+package com.pattern;
+
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+public interface Document {
+
+    Void put(String key, Object value);
+
+    Object get(String key);
+
+    <T> Stream<T> children(String key, Function<Map<String, Object>, T> constructor);
+}
